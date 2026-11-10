@@ -46,12 +46,18 @@ jobs:
           sudo apt-get install -y libwebkit2gtk-4.1-dev libsoup-3.0-dev build-essential \
             libssl-dev librsvg2-dev libayatana-appindicator3-dev patchelf
 
+      - name: Inno Setup (Windows)
+        if: matrix.name == 'windows'
+        shell: pwsh
+        run: |
+          if (-not (Test-Path "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe")) { choco install innosetup -y --no-progress }
+
       - name: Frontend (tests y build)
         run: |
           npm ci
           npm test
 
-      # build.sh corre cargo test y empaqueta (deb+AppImage en Linux, NSIS .exe en Windows)
+      # build.sh corre cargo test y empaqueta (deb+AppImage en Linux, instalador Inno Setup en Windows)
       - name: Compilar y empaquetar
         env:
           APPIMAGE_EXTRACT_AND_RUN: '1'

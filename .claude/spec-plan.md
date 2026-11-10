@@ -136,7 +136,7 @@
 ## Fase 6: QA, empaquetado y distribución — PENDIENTE
 
 **Duración estimada**: 3 días
-**Objetivo**: instaladores Windows (NSIS) y Linux (.deb/.AppImage), CI, verificación offline.
+**Objetivo**: instaladores Windows (Inno Setup, ícono en escritorio) y Linux (.deb/.AppImage), CI, verificación offline.
 **Complejidad**: Medio
 
 ### Entregables

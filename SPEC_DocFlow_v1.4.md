@@ -415,7 +415,7 @@ Formato: autofiltro, encabezados visibles, anchos legibles, inmovilizar primera 
 ## 12. Compilación multiplataforma y distribución — obligatorio (v1.4)
 
 - **Base de código única:** React + TypeScript + Tauri 2 + Rust; sin rutas, comandos ni separadores de Windows codificados directamente. Usar `PathBuf`, APIs de Tauri y diálogos nativos.
-- **Windows:** target x86_64; generar instalador `.exe` mediante NSIS. MSI puede ser opcional; no confundir un `.exe` instalador con el ejecutable portable.
+- **Windows:** target x86_64; generar el instalador `.exe` con **Inno Setup 6** (`installer/docflow.iss`): acceso directo opcional en el escritorio con el logo de DocFlow, acceso en el menú Inicio, instalación por usuario sin administrador, interfaz en español y verificación de WebView2. El ejecutable se compila con `tauri build --no-bundle`.
 - **Linux:** target x86_64; generar `.deb` para Ubuntu/Debian y `.AppImage` para distribuciones compatibles. Documentar las dependencias del entorno gráfico/WebKitGTK y limitaciones de cada distribución.
 - **Compilación nativa por sistema:** job de Windows en runner Windows y job de Linux en runner Ubuntu. No asumir que desde Ubuntu se puede producir directamente un instalador Windows sin toolchain y dependencias adicionales.
 - **CI/CD (GitHub Actions, `.github/workflows/build.yml`):** matriz Ubuntu 24.04 + Windows; corre tests de frontend y Rust y empaqueta con `build.sh`; sube artefactos y los adjunta a releases de tags `v*`. Solo fixtures sintéticos, nunca documentos reales. Local: `build.sh` / `build.ps1`; `run.sh` / `run.ps1` para desarrollo.

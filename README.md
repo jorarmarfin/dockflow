@@ -45,7 +45,7 @@ La app ya **analiza, revisa y genera** los PDFs (botón *Generar PDFs* con confi
 La compilación es **nativa en cada sistema** (no se compila Windows desde Linux):
 
 - Linux: `.deb` y `.AppImage`
-- Windows: instalador NSIS `.exe`
+- Windows: instalador **Inno Setup** `DocFlow-Setup-<versión>.exe` (con acceso directo en el escritorio y logo; requiere [Inno Setup 6](https://jrsoftware.org/isdl.php) instalado para compilar)
 
 Los paquetes quedan en `dist-release/` junto con `SHA256SUMS.txt`. 
 
