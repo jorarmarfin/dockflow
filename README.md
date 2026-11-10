@@ -97,7 +97,7 @@ run.sh / build.sh    scripts Linux (y Git Bash); .ps1 equivalentes para Windows
 
 ## Notas conocidas
 
-- Cada PDF generado pesa ~800 KB (≈143 MB el lote): el maestro trae las fuentes TrueType incrustadas completas y cada página se las lleva. Es un tema de tamaño, no de calidad; se evaluará subset/compresión en la Fase 6.
+- Cada PDF generado pesa ~800 KB (≈143 MB el lote): el maestro trae las fuentes TrueType incrustadas completas y cada página se las lleva. Es un tema de tamaño, no de calidad; se optimizan con un programa externo.
 - Dividir un PDF puede invalidar firmas digitales. El maestro actual no tiene firmas; si aparecen, hay que validar con los responsables.
 - La regex del código (8 dígitos + letra) está validada con este lote; es configurable para otras plantillas.
 

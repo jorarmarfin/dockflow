@@ -13,7 +13,7 @@
 - **Fase activa**: Fase 6 — QA, empaquetado y distribución
 - **Progreso**: 5 de 6 fases completadas
 - **Bloqueadores**: ninguno
-- **Próximo paso concreto**: probar instaladores en Windows/Linux, QA offline, evaluar tamaño de PDFs
+- **Próximo paso concreto**: probar instaladores en Windows/Linux y QA offline (tamaño de PDFs: descartado, el usuario optimiza con otro programa)
 
 ## Fase 1: Bootstrap y marca — COMPLETADA
 
