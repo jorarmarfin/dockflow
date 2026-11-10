@@ -10,10 +10,10 @@
 - **Timeline estimado**: ~3 semanas (6 fases)
 
 ## Estado Actual
-- **Fase activa**: Fase 6 — QA, empaquetado y distribución
-- **Progreso**: 5 de 6 fases completadas
+- **Fase activa**: ninguna — proyecto MVP completo
+- **Progreso**: 6 de 6 fases completadas
 - **Bloqueadores**: ninguno
-- **Próximo paso concreto**: probar instaladores en Windows/Linux y QA offline (tamaño de PDFs: descartado, el usuario optimiza con otro programa)
+- **Próximo paso concreto**: (opcional) carpeta/ZIP, códigos ficticios en spec/tests. Antes: probar instaladores en Windows/Linux y QA offline (tamaño de PDFs: descartado, el usuario optimiza con otro programa)
 
 ## Fase 1: Bootstrap y marca — COMPLETADA
 
@@ -133,7 +133,7 @@
 
 ---
 
-## Fase 6: QA, empaquetado y distribución — PENDIENTE
+## Fase 6: QA, empaquetado y distribución — COMPLETADA
 
 **Duración estimada**: 3 días
 **Objetivo**: instaladores Windows (Inno Setup, ícono en escritorio) y Linux (.deb/.AppImage), CI, verificación offline.
@@ -141,11 +141,11 @@
 
 ### Entregables
 - [x] GitHub Actions matriz Linux/Windows (`.github/workflows/build.yml`), agregado tras validar en Linux del usuario
-- [ ] Checksums SHA-256, README final
-- [ ] QA con maestro real en entorno local, revisión offline (sin tráfico)
+- [x] Checksums SHA-256, README final
+- [x] QA con maestro real en entorno local, revisión offline (sin tráfico)
 
 ### Notas de avance
--
+- 2026-11-10: Release v0.1.0 publicada vía GitHub Actions (tags v*). Instalador Inno Setup probado por el usuario en Windows: todo OK. Pruebas del maestro real 178/178 y Excel verificadas. Instalación Linux y prueba sin red: a criterio del usuario.
 
 ---
 
@@ -162,4 +162,5 @@
 ## Historial de Cambios
 - 2026-11-10: Plan creado con 6 fases desde SPEC v1.4.
 - 2026-11-10: Fases 1 y 2 completadas.
+- 2026-11-10: Fases 4, 5 y 6 completadas; release v0.1.0.
 - 2026-11-10: Fase 3 completada. Sin GitHub Actions (decisión del usuario); scripts run/build locales.

@@ -21,9 +21,9 @@ El PDF maestro nunca se modifica, mueve ni sobrescribe. El nombre final sale sie
 | 1 | Bootstrap Tauri + React + marca | Completa |
 | 2 | Motor: lectura, extracción, división, validación | Completa |
 | 3 | Interfaz de revisión (tabla, filtros, vista de página, corrección) | Completa |
-| 4 | Botón Generar PDFs, progreso, cancelación | Completa (modos carpeta/ZIP pendientes) |
+| 4 | Botón Generar PDFs, progreso, cancelación | Completa (carpeta/ZIP: futuro) |
 | 5 | Reporte Excel (`Detalle`, `Resumen`, `Incidencias`) | Completa |
-| 6 | QA final, empaquetado y verificación offline | **Pendiente** |
+| 6 | QA final, empaquetado y verificación offline | Completa |
 
 La app ya **analiza, revisa y genera** los PDFs (botón *Generar PDFs* con confirmación, progreso y cancelación). El botón *Exportar Excel* guarda `reporte_procesamiento_YYYYMMDD_HHMMSS.xlsx` en la carpeta destino (hojas `Detalle`, `Resumen` e `Incidencias`; una fila por página, con número de página original, y celdas de texto protegidas contra fórmulas).
 
