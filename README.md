@@ -51,7 +51,7 @@ Los paquetes quedan en `dist-release/` junto con `SHA256SUMS.txt`.
 
 ## GitHub Actions
 
-`.github/workflows/build.yml` compila en Ubuntu 24.04 y Windows en cada push a `main`, PR o ejecución manual (*Actions → Build → Run workflow*). Corre los tests, empaqueta con `build.sh` y sube los instaladores como artefactos (`docflow-linux`, `docflow-windows`).
+`.github/workflows/build.yml` compila en Ubuntu 24.04 y Windows **solo** al subir un tag `v*` (release) o al ejecutarlo a mano (*Actions → Build → Run workflow*). No corre en cada push. Corre los tests, empaqueta con `build.sh` y sube los instaladores como artefactos (`docflow-linux`, `docflow-windows`).
 
 Para publicar una release con los instaladores adjuntos:
 
