@@ -10,6 +10,7 @@ export function useBatch() {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  const [report, setReport] = useState<string | null>(null)
   const [progress, setProgress] = useState<{ done: number; total: number } | null>(null)
 
   const run = useCallback(async <T,>(fn: () => Promise<T>): Promise<T | undefined> => {
@@ -20,7 +21,7 @@ export function useBatch() {
   const analyze = useCallback(async (source: string) => {
     setBusy(true)
     const v = await run(() => invoke<BatchView>('analyze_batch', { source }))
-    if (v) setView(v)
+    if (v) { setView(v); setReport(null) }
     setBusy(false)
   }, [run])
 
@@ -47,6 +48,11 @@ export function useBatch() {
     setProgress(null); setBusy(false)
   }, [run])
   const cancel = useCallback(() => invoke('cancel_batch'), [])
+  const exportReport = useCallback(async () => {
+    const p = await run(() => invoke<string>('export_report'))
+    if (p) setReport(p)
+  }, [run])
+  const openReport = useCallback(() => run(() => invoke('open_report')), [run])
   const openDestination = useCallback(() => run(() => invoke('open_destination')), [run])
 
   useEffect(() => {
@@ -70,5 +76,5 @@ export function useBatch() {
     return () => un?.()
   }, [analyze])
 
-  return { view, busy, error, progress, generate, cancel, openDestination, pickPdf, pickDestination, correct, preview, openOriginal }
+  return { view, busy, error, progress, report, exportReport, openReport, generate, cancel, openDestination, pickPdf, pickDestination, correct, preview, openOriginal }
 }

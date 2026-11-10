@@ -11,6 +11,7 @@ use tauri_plugin_opener::OpenerExt;
 pub struct AppState {
     pub batch: Mutex<Option<Batch>>,
     pub cancel: AtomicBool,
+    pub last_report: Mutex<Option<PathBuf>>,
 }
 
 fn preview_dir() -> PathBuf {
@@ -90,4 +91,31 @@ pub fn cancel_batch(state: State<AppState>) {
 pub fn open_destination(app: AppHandle, state: State<AppState>) -> Result<(), DocFlowError> {
     let dest = with_batch(&state, |b| b.destination.clone().ok_or_else(|| DocFlowError::Otro("Sin destino".into())))?;
     app.opener().open_path(dest.to_string_lossy(), None::<&str>).map_err(|e| DocFlowError::Otro(e.to_string()))
+}
+
+/// Exporta `reporte_procesamiento_YYYYMMDD_HHMMSS.xlsx` a la carpeta destino. Devuelve la ruta.
+#[tauri::command]
+pub fn export_report(state: State<AppState>) -> Result<String, DocFlowError> {
+    let now = chrono::Local::now();
+    let path = with_batch(&state, |b| {
+        let dest = b.destination.clone().ok_or_else(|| DocFlowError::Otro("Primero elige la carpeta destino".into()))?;
+        std::fs::create_dir_all(&dest)?;
+        let path = dest.join(format!("reporte_procesamiento_{}.xlsx", now.format("%Y%m%d_%H%M%S")));
+        let master_name = b.master.file_name().map(|n| n.to_string_lossy().into_owned()).unwrap_or_default();
+        crate::excel_report::write_report(&path, &b.rows, &crate::excel_report::ReportMeta {
+            master_name: &master_name,
+            destination: &dest.to_string_lossy(),
+            generated_at: &now.format("%Y-%m-%d %H:%M:%S").to_string(),
+        })?;
+        Ok(path)
+    })?;
+    *state.last_report.lock().map_err(|_| DocFlowError::Otro("estado corrupto".into()))? = Some(path.clone());
+    Ok(path.to_string_lossy().into_owned())
+}
+
+#[tauri::command]
+pub fn open_report(app: AppHandle, state: State<AppState>) -> Result<(), DocFlowError> {
+    let path = state.last_report.lock().map_err(|_| DocFlowError::Otro("estado corrupto".into()))?
+        .clone().ok_or_else(|| DocFlowError::Otro("Aún no hay reporte exportado".into()))?;
+    app.opener().open_path(path.to_string_lossy(), None::<&str>).map_err(|e| DocFlowError::Otro(e.to_string()))
 }

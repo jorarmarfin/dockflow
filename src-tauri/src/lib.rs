@@ -1,6 +1,7 @@
 mod batch;
 mod commands;
 mod errors;
+mod excel_report;
 mod master_pdf;
 mod models;
 mod parser;
@@ -27,6 +28,8 @@ pub fn run() {
             commands::process_batch,
             commands::cancel_batch,
             commands::open_destination,
+            commands::export_report,
+            commands::open_report,
         ])
         .build(tauri::generate_context!())
         .expect("error al iniciar DocFlow")

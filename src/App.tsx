@@ -13,7 +13,7 @@ const btn = 'rounded-xl px-5 py-2.5 font-semibold disabled:opacity-50'
 export default function App() {
   const [engine, setEngine] = useState('…')
   const [editing, setEditing] = useState<DocumentRow | null>(null)
-  const { view, busy, error, progress, generate, cancel, openDestination, pickPdf, pickDestination, correct, preview, openOriginal } = useBatch()
+  const { view, busy, error, progress, report, exportReport, openReport, generate, cancel, openDestination, pickPdf, pickDestination, correct, preview, openOriginal } = useBatch()
 
   useEffect(() => {
     invoke<string>('ping').then(setEngine).catch(() => setEngine('sin motor (modo web)'))
@@ -58,6 +58,11 @@ export default function App() {
           className={`${btn} bg-navy text-white`}>
           Generar PDFs{pending > 0 ? ` (${pending})` : ''}
         </button>
+        <button onClick={exportReport} disabled={!view?.destination || busy}
+          title={!view?.destination ? 'Primero elige la carpeta destino' : 'Guarda el reporte .xlsx en la carpeta destino'}
+          className={`${btn} border border-navy text-navy`}>
+          Exportar Excel
+        </button>
         {progress && <button onClick={cancel} className={`${btn} border border-danger text-danger`}>Cancelar</button>}
         <div className="min-w-0 flex-1 text-sm text-slate-600">
           {view ? (
@@ -85,6 +90,14 @@ export default function App() {
           <span className="font-semibold text-teal">✓ {processed} PDFs generados</span>
           {pending > 0 && <span className="text-sm text-amber-700">{pending} pendientes (puedes volver a generar)</span>}
           <button onClick={openDestination} className="ml-auto rounded-xl bg-teal px-4 py-2 font-semibold text-white">Abrir carpeta destino</button>
+        </div>
+      )}
+
+      {report && (
+        <div className="flex flex-wrap items-center gap-3 rounded-card border border-blue/30 bg-blue/5 p-4 text-sm">
+          <span className="font-semibold text-blue">✓ Reporte exportado</span>
+          <span className="min-w-0 flex-1 truncate text-slate-600">{report}</span>
+          <button onClick={openReport} className="rounded-xl bg-blue px-4 py-2 font-semibold text-white">Abrir Excel</button>
         </div>
       )}
 

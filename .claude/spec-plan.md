@@ -10,10 +10,10 @@
 - **Timeline estimado**: ~3 semanas (6 fases)
 
 ## Estado Actual
-- **Fase activa**: Fase 5 — Reporte XLSX (Fase 4: falta carpeta/ZIP)
-- **Progreso**: 4 de 6 fases completadas
+- **Fase activa**: Fase 6 — QA, empaquetado y distribución
+- **Progreso**: 5 de 6 fases completadas
 - **Bloqueadores**: ninguno
-- **Próximo paso concreto**: `excel_report.rs` con rust_xlsxwriter y botón Exportar Excel
+- **Próximo paso concreto**: probar instaladores en Windows/Linux, QA offline, evaluar tamaño de PDFs
 
 ## Fase 1: Bootstrap y marca — COMPLETADA
 
@@ -117,19 +117,19 @@
 
 ---
 
-## Fase 5: Reporte XLSX — PENDIENTE
+## Fase 5: Reporte XLSX — COMPLETADA
 
 **Duración estimada**: 2 días
 **Objetivo**: Excel `Detalle`, `Resumen`, `Incidencias` con protección de inyección de fórmulas.
 **Complejidad**: Bajo
 
 ### Entregables
-- [ ] `excel_report.rs` con `rust_xlsxwriter`
-- [ ] Formato (autofiltro, freeze, colores por estado)
-- [ ] Tests: una fila por página, sin desfase
+- [x] `excel_report.rs` con `rust_xlsxwriter`
+- [x] Formato (autofiltro, freeze, colores por estado)
+- [x] Tests: una fila por página, sin desfase
 
 ### Notas de avance
--
+- 2026-11-10: `excel_report.rs` (rust_xlsxwriter), comandos `export_report`/`open_report`, botón Exportar Excel + Abrir Excel. Test lee el xlsx con calamine: 3 hojas, 1 fila por página sin desfase, fórmulas neutralizadas. Falta abrirlo en Microsoft Excel real (QA Fase 6).
 
 ---
 

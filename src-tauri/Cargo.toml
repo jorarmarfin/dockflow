@@ -24,6 +24,8 @@ tauri-plugin-opener = "2"
 lopdf = "0.47.0"
 pdf-extract = "0.12.1"
 regex = "1.13.1"
+rust_xlsxwriter = "0.102.0"
+chrono = "0.4.45"
 
 [profile.release]
 lto = true
@@ -31,5 +33,6 @@ codegen-units = 1
 strip = true
 
 [dev-dependencies]
+calamine = "0.38.0"
 sha2 = "0.11.1"
 tempfile = "3.27.0"
