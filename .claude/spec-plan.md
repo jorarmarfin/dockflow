@@ -140,7 +140,7 @@
 **Complejidad**: Medio
 
 ### Entregables
-- [x] ~~GitHub Actions~~ descartado por el usuario: sin CI; compilación con `build.sh`/`build.ps1` probada en su Linux al final
+- [x] GitHub Actions matriz Linux/Windows (`.github/workflows/build.yml`), agregado tras validar en Linux del usuario
 - [ ] Checksums SHA-256, README final
 - [ ] QA con maestro real en entorno local, revisión offline (sin tráfico)
 

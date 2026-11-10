@@ -47,7 +47,19 @@ La compilación es **nativa en cada sistema** (no se compila Windows desde Linux
 - Linux: `.deb` y `.AppImage`
 - Windows: instalador NSIS `.exe`
 
-Los paquetes quedan en `dist-release/` junto con `SHA256SUMS.txt`. No hay CI/GitHub Actions: se compila en local.
+Los paquetes quedan en `dist-release/` junto con `SHA256SUMS.txt`. 
+
+## GitHub Actions
+
+`.github/workflows/build.yml` compila en Ubuntu 24.04 y Windows en cada push a `main`, PR o ejecución manual (*Actions → Build → Run workflow*). Corre los tests, empaqueta con `build.sh` y sube los instaladores como artefactos (`docflow-linux`, `docflow-windows`).
+
+Para publicar una release con los instaladores adjuntos:
+
+```bash
+git tag v0.1.0 && git push origin v0.1.0
+```
+
+El CI nunca usa PDFs reales: la prueba del maestro real solo corre si defines `DOCFLOW_REAL_MASTER`.
 
 ## Pruebas
 
