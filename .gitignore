@@ -1,0 +1,8 @@
+*.pdf
+!tests/fixtures/*.pdf
+node_modules/
+dist/
+target/
+src-tauri/gen/
+*.xlsx
+dist-release/

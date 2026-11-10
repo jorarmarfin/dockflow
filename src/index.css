@@ -1,0 +1,24 @@
+@import '@fontsource-variable/inter';
+@import 'tailwindcss';
+
+@theme {
+  --color-navy: #0f172a;
+  --color-teal: #0ea5a4;
+  --color-blue: #2563eb;
+  --color-gray: #cbd5e1;
+  --color-offwhite: #f8fafc;
+  --color-amber: #f59e0b;
+  --color-danger: #dc2626;
+  --font-sans: 'Inter Variable', system-ui, sans-serif;
+  --radius-card: 16px;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(900px 400px at 100% -10%, rgb(14 165 164 / 0.12), transparent 60%),
+    var(--color-offwhite);
+  color: var(--color-navy);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}

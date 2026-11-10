@@ -1,0 +1,35 @@
+[package]
+name = "docflow"
+version = "0.1.0"
+description = "DocFlow — automatización documental local y segura"
+authors = ["DocFlow"]
+license = "UNLICENSED"
+edition = "2024"
+rust-version = "1.90"
+
+[lib]
+name = "docflow_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2.7.4", features = [] }
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2"
+tauri = { version = "2.12.5", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-opener = "2"
+lopdf = "0.47.0"
+pdf-extract = "0.12.1"
+regex = "1.13.1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true
+
+[dev-dependencies]
+sha2 = "0.11.1"
+tempfile = "3.27.0"

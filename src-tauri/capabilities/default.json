@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Permisos mínimos: sin red, solo diálogos y abrir carpeta/archivo local",
+  "windows": ["main"],
+  "permissions": ["core:default", "dialog:default", "opener:default"]
+}
